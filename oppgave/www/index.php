@@ -1,6 +1,6 @@
 <?php
 
 
-readfile("oppgave1.html");
+readfile("oppgave3.html");
 
  
