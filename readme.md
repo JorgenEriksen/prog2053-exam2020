@@ -1,13 +1,10 @@
-# PROG2053 eksamen v2020
-* Lag en FORK av dette repositoriet og gi meg leserettigheter (aland.a.mendoza@ntnu.no). Det som er i repositoriet på slutten av eksamen teller som din besvarelse.
-* Legg inn studentnummeret ditt øverst i readme.md fila.
-* IKKE kjør "npm install" i www mappa i oppgave, se siste kommentar i oppgaven.
+10038
 
-## Oppgave - Web komponenter
-*Merk: det er ferdige PHP skript i oppgave/www/api for å hente og oppdatere informasjon.*
+First task with DOM is in oppgave1.html, and secound task is in oppgave3.html / edit-user.js.
 
-Lag en side som lister ut alle brukere. Hent brukere fra api/fetchUsers.php med fetch i JavaScript. Vis lista med brukere på venstre side av skjermen. Når en bruker velges fra lista skal et skjema for å redigere brukerens info vises på høyre side av skjermen.
+I didn't understand how it was suppose for us to run this program, but I had to edit the index.php to make it work, so to make it run oppgave3.html I wrote 'readfile("oppgave3.html");' and to run 'readfile("oppgave1.html")'. See my index.php to see what I mean. I have run the program on localhost with docker.
 
-I denne oppgaven skal du lage samme funksjonaliteten med web komponenter. I filen oppgave3.html finner du startpunktet for denne oppgaven. Denne filen bruker users-list.js komponenten i js/components mappen til å lage en liste av alle brukere, funksjonaliteten i denne komponenten er ferdig laget. I render (på linje 56) brukes en edit-user.js komponent, denne komponenten får tilsendt den valgte brukeren. Det som mangler i edit-user.js er funksjonaliteten for å oppdatere en bruker.
 
-NB, i oppgave/www/node_modules ligger lit-element med de endringer som skal til for at det fungerer uten å bruke "polymer serve" (dvs, koden fungerer direkte i docker/XAMPP).
+I did get everything to work, exept to update the database both on the first and the second task, I didn't have any information about how to do it, but you can see how I tried in the code by doing the fetch function to 'api/updateUser.php' with method PUT, and with the userinformation in the body.
+
+
