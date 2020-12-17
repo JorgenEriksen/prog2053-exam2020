@@ -2,7 +2,7 @@
   "name": "litelement",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "index.php",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.7",
     "@polymer/polymer": "^3.0.0",

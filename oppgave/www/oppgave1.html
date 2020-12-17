@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module" src="./js/components/users-list.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+  
+    <div class="container">
+      <div class="row">
+        <div id="userlist" class="col-sm">
+          <h1>Users</h1>
+        </div>
+        <div class="col-sm">
+          <h1>Edit users</h1>
+          <form>
+            <div class="form-group">
+              <label for="email">Username/Email</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="firstname">firstname</label>
+              <input type="firstname" class="form-control" id="firstname" required>
+            </div>
+            <div class="form-group">
+              <label for="lastname">lastname</label>
+              <input type="lastname" class="form-control" id="lastname" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    
+
+  </body>
+  <script>
+    fetch('api/fetchUsers.php')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      let userColumn = document.getElementById('userlist');
+      data.forEach(u => {
+        let username = document.createElement('h2');
+        username.innerHTML = u.uname;
+        username.addEventListener('click', () => {
+          document.getElementById('email').value = u.uname;
+          document.getElementById('firstname').value = u.firstName;
+          document.getElementById('lastname').value = u.lastName;
+          console.log(u);
+        });
+
+        userColumn.appendChild(username);
+      });
+
+
+
+    });
+
+
+
+    
+
+    </script>
+</html>
