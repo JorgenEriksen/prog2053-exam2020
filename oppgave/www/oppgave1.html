@@ -35,7 +35,7 @@
               <input type="lastname" class="form-control" id="lastname" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" id="button" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
@@ -45,15 +45,17 @@
 
   </body>
   <script>
+    let selectedUserIdx = 0;
     fetch('api/fetchUsers.php')
     .then(response => response.json())
     .then(data => {
       console.log(data);
       let userColumn = document.getElementById('userlist');
-      data.forEach(u => {
+      data.forEach((u, idx) => {
         let username = document.createElement('h2');
         username.innerHTML = u.uname;
         username.addEventListener('click', () => {
+          selectedUserIdx = idx;
           document.getElementById('email').value = u.uname;
           document.getElementById('firstname').value = u.firstName;
           document.getElementById('lastname').value = u.lastName;
@@ -63,6 +65,20 @@
         userColumn.appendChild(username);
       });
 
+      document.getElementById('button').addEventListener('click', () => {
+        let data = data[selectedUserIdx];
+        fetch('api/updateUser.php', {
+        method: 'PUT',
+        body: data,
+      }).then(res=>res.json())
+        .then(data=>{
+          if (data.status=='success') {
+              console.log("Updated");
+          } else {
+              console.log("Error");
+          }
+        })
+      })
 
 
     });
